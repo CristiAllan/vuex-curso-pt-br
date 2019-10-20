@@ -9,12 +9,15 @@
     <v-card-text>{{ firstText }}</v-card-text>
     <v-card-text>{{ secondText }}</v-card-text>
 
+    <p>{{ storeCount }}</p>
+
     <slot></slot>
 
   </v-card>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   props: [
     'cardTitle',
@@ -23,6 +26,10 @@ export default {
   ],
   data: () => ({
     //
+  }),
+
+  computed: mapState({
+    storeCount: 'count'
   })
 }
 </script>

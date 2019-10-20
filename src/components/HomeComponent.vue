@@ -11,9 +11,11 @@
             >
 
               <ExtraData>
-                <h1>teste</h1>
+                <h1>{{ this.count }}</h1>
 
-                <ExtraData><p>bla</p></ExtraData>
+                <ExtraData>
+                  <v-btn @click="incrementCount">Click to increment the count number</v-btn>
+                </ExtraData>
               </ExtraData>
 
             </Card>
@@ -27,7 +29,7 @@
             >
 
               <ExtraData>
-                <h1>teste</h1>
+                <h1>{{ count }}</h1>
 
                 <ExtraData><p>bla</p></ExtraData>
               </ExtraData>
@@ -43,12 +45,40 @@
 <script>
 import Card from './Card'
 import ExtraData from './ExtraData'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   components: {
     Card,
     ExtraData
+  },
+
+/*
+  computed: {
+    count () {
+      return this.$store.state.count
+    }
+  },
+*/
+
+  computed: mapState([
+    'count'
+  ]),
+
+/*
+  methods: {
+    incrementCount: function () {
+      this.$store.dispatch('incrementCount')
+    }
   }
+*/
+
+  methods: {
+    ...mapActions([
+      'incrementCount'
+    ])
+  }
+
 }
 </script>
 
