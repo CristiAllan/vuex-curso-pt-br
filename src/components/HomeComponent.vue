@@ -61,7 +61,7 @@ export default {
   },
 */
 
-  computed: mapState([
+  computed: mapState('postModule', [
     'count'
   ]),
 
@@ -74,7 +74,7 @@ export default {
 */
 
   methods: {
-    ...mapActions([
+    ...mapActions('postModule', [
       'incrementCount'
     ])
   }

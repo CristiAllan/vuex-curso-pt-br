@@ -29,7 +29,7 @@ export default {
   }),
 
   computed: mapState({
-    storeCount: 'count'
+    storeCount: state => state.postModule.count
   })
 }
 </script>
