@@ -9,8 +9,6 @@
     <v-card-text>{{ firstText }}</v-card-text>
     <v-card-text>{{ secondText }}</v-card-text>
 
-    <p>{{ storeCount }}</p>
-
     <slot></slot>
 
   </v-card>
@@ -26,10 +24,6 @@ export default {
   ],
   data: () => ({
     //
-  }),
-
-  computed: mapState({
-    storeCount: state => state.postModule.count
   })
 }
 </script>

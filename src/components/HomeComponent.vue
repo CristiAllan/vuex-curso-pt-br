@@ -10,14 +10,6 @@
               secondText="Second post body"
             >
 
-              <ExtraData>
-                <h1>{{ this.count }}</h1>
-
-                <ExtraData>
-                  <v-btn @click="incrementCount">Click to increment the count number</v-btn>
-                </ExtraData>
-              </ExtraData>
-
             </Card>
           </div>
 
@@ -27,12 +19,6 @@
               firstText="First User title"
               secondText="Second User body"
             >
-
-              <ExtraData>
-                <h1>{{ count }}</h1>
-
-                <ExtraData><p>bla</p></ExtraData>
-              </ExtraData>
 
             </Card>
           </div>
@@ -51,34 +37,7 @@ export default {
   components: {
     Card,
     ExtraData
-  },
-
-/*
-  computed: {
-    count () {
-      return this.$store.state.count
-    }
-  },
-*/
-
-  computed: mapState('postModule', [
-    'count'
-  ]),
-
-/*
-  methods: {
-    incrementCount: function () {
-      this.$store.dispatch('incrementCount')
-    }
   }
-*/
-
-  methods: {
-    ...mapActions('postModule', [
-      'incrementCount'
-    ])
-  }
-
 }
 </script>
 
