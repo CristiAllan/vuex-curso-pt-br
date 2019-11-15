@@ -37,6 +37,16 @@ export default {
   components: {
     Card,
     ExtraData
+  },
+
+  created () {
+    this.getData()
+  },
+
+  methods: {
+    ...mapActions('postModule', [
+      'getData'
+    ])
   }
 }
 </script>
