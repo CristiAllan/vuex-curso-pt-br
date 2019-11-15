@@ -56,6 +56,11 @@ const postModule = {
     getUserId ({ commit }, userId) {
       commit('setUserId', userId)
     }
+  },
+  getters: {
+    postData: state => state.fullData,
+    truncatedBody: state => state.body.slice(0, 50) + '...',
+    upperTitle: state => state.title.toUpperCase()
   }
 }
 

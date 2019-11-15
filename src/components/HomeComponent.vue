@@ -6,9 +6,13 @@
           <div class="card-a">
             <Card
               cardTitle="Post data"
-              firstText="First post title"
-              secondText="Second post body"
+              :firstText="upperTitle"
+              :secondText="truncatedBody"
             >
+
+            <ExtraData>
+              {{ body }}
+            </ExtraData>
 
             </Card>
           </div>
@@ -31,12 +35,22 @@
 <script>
 import Card from './Card'
 import ExtraData from './ExtraData'
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
   components: {
     Card,
     ExtraData
+  },
+
+  computed: {
+    ...mapState('postModule', [
+      'body'
+    ]),
+
+    ...mapGetters('postModule', [
+      'truncatedBody', 'upperTitle'
+    ])
   },
 
   created () {
