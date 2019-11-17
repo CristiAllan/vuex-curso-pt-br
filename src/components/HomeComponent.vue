@@ -20,10 +20,12 @@
           <div class="card-b">
             <Card
               cardTitle="User data"
-              firstText="First User title"
-              secondText="Second User body"
+              :firstText="userName"
+              :secondText="userEmail"
             >
-
+              <ExtraData>
+                <v-btn @click="getUser">Get User data</v-btn>
+              </ExtraData>
             </Card>
           </div>
         </v-row>
@@ -50,7 +52,15 @@ export default {
 
     ...mapGetters('postModule', [
       'truncatedBody', 'upperTitle'
-    ])
+    ]),
+
+    ...mapState('userModule', {
+      userEmail: 'email'
+    }),
+
+    ...mapGetters('userModule', {
+      userName: 'upperName'
+    })
   },
 
   created () {
@@ -60,7 +70,11 @@ export default {
   methods: {
     ...mapActions('postModule', [
       'getData'
-    ])
+    ]),
+
+    ...mapActions('userModule', {
+      getUser: 'getData'
+    })
   }
 }
 </script>
