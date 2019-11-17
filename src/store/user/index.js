@@ -3,7 +3,8 @@ const userModule = {
   state: {
     id: '',
     name: '',
-    email: ''
+    email: '',
+    postsCount: ''
   },
 
   mutations: {
@@ -15,11 +16,14 @@ const userModule = {
     },
     setEmail (state, email) {
       state.email = email
+    },
+    setPostsCount (state, counter) {
+      state.postsCount = counter
     }
   },
 
   actions: {
-    getData ({ commit }) {
+    getData ({ commit, dispatch }) {
       const url = 'https://jsonplaceholder.typicode.com/users/1'
 
       fetch(url)
@@ -28,8 +32,22 @@ const userModule = {
           commit('setId', json.id)
           commit('setName', json.name)
           commit('setEmail', json.email)
+
+          dispatch('getUserPosts')
         })
         .catch(error => console.log(error))
+    },
+
+    getUserPosts ({ dispatch }) {
+      const url = 'https://jsonplaceholder.typicode.com/posts?userId=1'
+
+      fetch(url)
+        .then(response => response.json())
+        .then(json => dispatch('setPostsCount', json))
+    },
+
+    setPostsCount ({ commit }, posts) {
+      commit('setPostsCount', posts.length)
     }
 
   },

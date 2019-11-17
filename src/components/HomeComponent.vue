@@ -26,6 +26,10 @@
               <ExtraData>
                 <v-btn @click="getUser">Get User data</v-btn>
               </ExtraData>
+
+              <ExtraData>
+                <h3 v-if="userPostsCounter">Posted <span>{{ userPostsCounter }}</span></h3>
+              </ExtraData>
             </Card>
           </div>
         </v-row>
@@ -55,7 +59,8 @@ export default {
     ]),
 
     ...mapState('userModule', {
-      userEmail: 'email'
+      userEmail: 'email',
+      userPostsCounter: 'postsCount'
     }),
 
     ...mapGetters('userModule', {
@@ -88,5 +93,9 @@ export default {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+  }
+
+  span {
+    color: green;
   }
 </style>
