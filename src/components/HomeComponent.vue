@@ -16,7 +16,8 @@
 
             <ExtraData>
               <v-form>
-                <v-text-field v-model="title" />
+                <v-text-field :value="title" @input="updateTitle" />
+
                 <v-text-field v-model="body" />
               </v-form>
             </ExtraData>
@@ -86,7 +87,11 @@ export default {
 
     ...mapActions('userModule', {
       getUser: 'getData'
-    })
+    }),
+
+    updateTitle: function (e) {
+      this.$store.commit('postModule/setTitle', e)
+    }
   }
 }
 </script>
