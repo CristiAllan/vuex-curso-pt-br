@@ -36,6 +36,12 @@
               </ExtraData>
 
               <ExtraData>
+                <p>{{ street }}</p>
+                <p>{{ suite }}</p>
+                <p>{{ city }}</p>
+              </ExtraData>
+
+              <ExtraData>
                 <h3 v-if="userPostsCounter">Posted <span>{{ userPostsCounter }}</span></h3>
               </ExtraData>
             </Card>
@@ -74,6 +80,10 @@ export default {
     ...mapGetters('userModule', {
       userName: 'upperName'
     }),
+
+    ...mapState('userModule/address', [
+      'street', 'suite', 'city'
+    ]),
 
     body: {
       get () {
