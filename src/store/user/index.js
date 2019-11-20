@@ -1,5 +1,11 @@
+import address from './address'
+
 const userModule = {
   namespaced: true,
+  modules: {
+    address: address
+  },
+
   state: {
     id: '',
     name: '',
@@ -34,6 +40,7 @@ const userModule = {
           commit('setEmail', json.email)
 
           dispatch('getUserPosts')
+          dispatch('address/fillAddress', json.address)
         })
         .catch(error => console.log(error))
     },
