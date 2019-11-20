@@ -59,7 +59,7 @@ export default {
 
   computed: {
     ...mapState('postModule', [
-      'body', 'title'
+      'title'
     ]),
 
     ...mapGetters('postModule', [
@@ -73,7 +73,17 @@ export default {
 
     ...mapGetters('userModule', {
       userName: 'upperName'
-    })
+    }),
+
+    body: {
+      get () {
+        return this.$store.state.postModule.body
+      },
+
+      set (value) {
+        this.$store.commit('postModule/setBody', value)
+      }
+    }
   },
 
   created () {
