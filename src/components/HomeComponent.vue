@@ -14,6 +14,13 @@
               {{ body }}
             </ExtraData>
 
+            <ExtraData>
+              <v-form>
+                <v-text-field v-model="title" />
+                <v-text-field v-model="body" />
+              </v-form>
+            </ExtraData>
+
             </Card>
           </div>
 
@@ -51,7 +58,7 @@ export default {
 
   computed: {
     ...mapState('postModule', [
-      'body'
+      'body', 'title'
     ]),
 
     ...mapGetters('postModule', [

@@ -8,6 +8,7 @@ import postModule from './post/index'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  strict: true,
   modules: {
     userModule: userModule,
     postModule: postModule
