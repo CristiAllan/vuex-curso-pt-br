@@ -118,7 +118,7 @@ export default {
 
 <style scoped>
   .container, .row {
-    height: 100%;
+    height: 80%;
   }
 
   .main-content {
